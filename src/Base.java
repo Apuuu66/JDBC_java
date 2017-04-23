@@ -4,20 +4,18 @@ import java.sql.*;
  * Created by Snoopy on 2017/4/17.
  */
 public class Base {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        test();
+    public static void main(String[] args) throws Exception {
+        template();
     }
 
-    static void template() throws SQLException, ClassNotFoundException {
+    static void template() throws Exception {
         Connection con = null;
         Statement st = null;
         ResultSet res = null;
-        String url = "jdbc:mysql://localhost:3306/jdbc";
-        String user = "root";
-        String password = "111111";
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, password);
+            con = JdbcUtils.getConnection();
             st = con.createStatement();
             res = st.executeQuery("SELECT * FROM USER ");
             while (res.next()) {
@@ -25,25 +23,9 @@ public class Base {
                         "\t" + res.getObject(3) + "\t" + res.getObject(4));
             }
         } finally {
-            try {
-                if (res != null)
-                    res.close();
-            } finally {
-                try {
-                    if (st != null)
-                        st.close();
-                } finally {
-                    try {
-                        if (con != null)
-                            con.close();
-                    } finally {
-
-                    }
+            JdbcUtils.free(st,con,res);
                 }
             }
-        }
-
-    }
 
     static void test() throws SQLException, ClassNotFoundException {
         //注册驱动
