@@ -1,7 +1,7 @@
 import java.sql.*;
 
 /**
- * Created by Snoopy on 2017/4/17.
+ * Created by wYiGui on 2017/4/17.
  */
 public class Base {
     public static void main(String[] args) throws Exception {
@@ -12,7 +12,6 @@ public class Base {
         Connection con = null;
         Statement st = null;
         ResultSet res = null;
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = JdbcUtils.getConnection();
