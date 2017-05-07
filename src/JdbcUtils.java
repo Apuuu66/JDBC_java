@@ -6,7 +6,7 @@ import java.sql.*;
 public final class JdbcUtils {
     private static String url = "jdbc:mysql://localhost:3306/jdbc";
     private static String user = "root";
-    private static String password = "111111";
+    private static String password = "1111";
 
     private JdbcUtils() {
 

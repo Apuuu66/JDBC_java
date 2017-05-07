@@ -15,7 +15,7 @@ public class TestJDBC {
             Class.forName("com.mysql.jdbc.Driver");
             //创建连接
             String url = "jdbc:mysql:///tsgl";
-            con = DriverManager.getConnection(url,"root","111111");
+            con = (Connection)DriverManager.getConnection(url,"root","1111");
             //创建语句对象
             st = con.createStatement();
             //执行查询语句
